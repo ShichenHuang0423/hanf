@@ -19,8 +19,8 @@ def load_correct(path):
             'hf':   hf_val,
             'len':  round(float(r[3] or 0), 1),
             'ann':  r[4] or '',
-            'p1':   str(r[5] or ''),
-            'p2':   str(r[6] or ''),
+            'p1':   str(r[5] or '').upper(),
+            'p2':   str(r[6] or '').upper(),
             'comp': str(r[7] or ''),
         })
     return rows
@@ -38,8 +38,8 @@ def load_auto(path):
             'hf':   hf_val,
             'len':  round(float(r[3] or 0), 1),
             'ann':  r[4] or '',
-            'p1':   str(r[5] or ''),
-            'p2':   str(r[6] or ''),
+            'p1':   str(r[5] or '').upper(),
+            'p2':   str(r[6] or '').upper(),
             'comp': str(r[7] or ''),
         })
     return rows
@@ -48,7 +48,7 @@ manual = load_correct(CORRECT_FILE)
 script = load_auto(AUTO_FILE)
 
 # Only compare components for which we have DXF files
-HAVE_DXF = {'BE018','BE019','BE020','BE021','BE022','BE023','CO007','CO008','CO009'}
+HAVE_DXF = {'BE018','BE019','BE020','BE021','BE022','BE023','CO006','CO007','CO008','CO009','CO010'}
 manual = [r for r in manual if r['comp'] in HAVE_DXF]
 script = [r for r in script if r['comp'] in HAVE_DXF]
 
